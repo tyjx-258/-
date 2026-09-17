@@ -1,0 +1,19 @@
+{
+    "configurations": [
+        {
+            "name": "MinGW64",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "O:/mingw64/include",
+                "O:/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include",
+                "O:/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++",
+                "O:/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32"
+            ],
+            "compilerPath": "O:/mingw64/bin/g++.exe",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "windows-gcc-x64"
+        }
+    ],
+    "version": 4
+}

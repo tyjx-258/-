@@ -1,3 +1,15 @@
-﻿*.exe
+# 编译产物
+*.exe
 *.o
 *.obj
+*.out
+
+# VS / 构建缓存
+.vs/
+build/
+Debug/
+Release/
+
+# 临时文件
+*.tmp
+*.log
