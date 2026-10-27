@@ -1,0 +1,64 @@
+@startuml
+scale 1.2
+
+abstract class BorrowRule {
+  +readerType() : string
+  +maxBorrowCount() : size_t
+  +borrowDays() : int
+}
+
+class StudentBorrowRule {
+  +maxBorrowCount() = 3
+  +borrowDays() = 30
+}
+
+class TeacherBorrowRule {
+  +maxBorrowCount() = 8
+  +borrowDays() = 90
+}
+
+class Reader {
+  -id : string
+  -name : string
+  -rule : unique_ptr<BorrowRule>
+  +canBorrow(currentCount) : bool
+}
+
+class Book {
+  -isbn : string
+  -title : string
+  -author : string
+  -totalCopies : int
+  -availableCopies : int
+  +borrowCopy() : bool
+  +returnCopy() : bool
+}
+
+class BorrowRecord {
+  -recordId : int
+  -readerId : string
+  -isbn : string
+  -borrowDate : string
+  -dueDate : string
+  -returnDate : string
+  +markReturned(date) : void
+}
+
+class Library {
+  -books : vector<Book>
+  -readers : vector<Reader>
+  -records : vector<BorrowRecord>
+  +borrowBook(readerId, isbn) : bool
+  +returnBook(readerId, isbn) : bool
+}
+
+BorrowRule <|-- StudentBorrowRule
+BorrowRule <|-- TeacherBorrowRule
+Reader *-- BorrowRule
+Library *-- Book
+Library *-- Reader
+Library *-- BorrowRecord
+BorrowRecord ..> Book : isbn
+BorrowRecord ..> Reader : readerId
+
+@enduml

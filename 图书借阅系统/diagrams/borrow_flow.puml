@@ -1,0 +1,25 @@
+@startuml
+start
+:输入 readerId、isbn;
+:查找图书和读者;
+if (图书和读者都存在?) then (否)
+  :返回错误信息;
+  stop
+else (是)
+endif
+if (有可借副本?) then (否)
+  :返回“无可用副本”;
+  stop
+else (是)
+endif
+if (未达到借阅上限?) then (否)
+  :返回“达到借阅上限”;
+  stop
+else (是)
+endif
+:borrowCopy() 减少可借数量;
+:计算 borrowDate 和 dueDate;
+:新增 BorrowRecord;
+:返回借阅成功;
+stop
+@enduml
